@@ -1,5 +1,6 @@
 import pygame
 import time
+import random
 #Lets Set up our window
 pygame.init()
 display_width=1000
@@ -11,8 +12,10 @@ ship_height= 72
 gameDisplay =pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption("Planet Parenthood") #Changes the title of the window
 clock=pygame.time.Clock()
-
 shipIMG= pygame.image.load('ship')
+enemyIMG=pygame.image.load('enemies')
+def things(thingx,thingy, enemyIMG):
+    gameDisplay.blit(enemyIMG, (thingx, thingy))
 def ship(x,y):
     gameDisplay.blit(shipIMG,(x,y))
 def text_objects(text, font):
@@ -33,6 +36,9 @@ def game_loop():
     x=0
     y=(display_height*0.5)
     y_change=0
+    thing_startx= 1000
+    thing_starty= random.randrange(0,display_height)
+    thing_speed=-7
     #So the user has to X out in order to exit the window
     gameExit=False
     while not gameExit:
@@ -50,10 +56,17 @@ def game_loop():
                     y_change=0
         y+=y_change
         gameDisplay.fill(white)
-        ship(x,y)
 
+        things(thing_startx, thing_starty, enemyIMG)
+        thing_startx+=thing_speed
+
+        ship(x,y)
         if y > display_height-ship_height or y<0:
             crash()
+        if thing_startx < 0:
+            thing_startx=display_width
+            thing_starty=random.randrange(0,display_height)
+
         pygame.display.update()
         #How fast are we going to target Frames per second
         clock.tick(60)
