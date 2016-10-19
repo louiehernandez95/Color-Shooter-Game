@@ -9,7 +9,7 @@ display_height=600
 #RGB colors
 black=(0,0,0)
 white=(255,255,255)
-red=(255,0,0)
+red=(200,0,0)
 green = (0,200,0)
 bright_red = (255,0,0)
 bright_green = (0,255,0)
@@ -44,7 +44,7 @@ def crash():
                 pygame.quit()
                 quit()
 
-        button("Play Again", 150, 450, 100, 50, green, bright_green, game_loop)
+        button("Play Again", 333, 450, 100, 50, green, bright_green, game_loop)
         button("Quit", 550, 450, 100, 50, red, bright_red, quitgame)
 
         pygame.display.update()
@@ -92,7 +92,7 @@ def paused():
                 pygame.quit()
                 quit()
 
-        button("Continue", 150, 450, 100, 50, green, bright_green, unpause)
+        button("Continue", 333, 450, 100, 50, green, bright_green, unpause)
         button("Quit", 550, 450, 100, 50, red, bright_red, quitgame)
 
         pygame.display.update()
@@ -115,7 +115,7 @@ def game_intro():
         TextRect.center = ((display_width / 2), (display_height / 2))
         gameDisplay.blit(TextSurf, TextRect)
 
-        button("GO!", 150, 450, 100, 50, green, bright_green, game_loop)
+        button("GO!", 333, 450, 100, 50, green, bright_green, game_loop)
         button("Quit", 550, 450, 100, 50, red, bright_red, quitgame)
 
         pygame.display.update()
