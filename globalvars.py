@@ -8,7 +8,6 @@ VERSION = "Pylaga .0.14"
 global DATADIR, ENEMYDIR, STAGEDIR, ROOTDIR
 ROOTDIR = os.getcwd()
 sys.path.append(ROOTDIR)
-DATADIR = "data/"
 ENEMYDIR = "enemys/"
 BULLETDIR = "bullets/"
 GUNDIR = "guns/"
@@ -115,55 +114,13 @@ def normalize_img(img):
     img.convert()
 
 
-def load_file(filename):
-    try:
-        imgfile = os.path.join(filename)
-        img = pygame.image.load(imgfile).convert()
-        normalize_img(img)
-        return img
-    except:
-        print "Failed to load file " + filename
-
 
 # loads the background file
 screen = pygame.Surface((WIN_RESX, WIN_RESY))
 screen.fill(bgcolor)
 
-# loads logo
-logo = load_file(DATADIR + "logo.jpeg")
 
 
-# loads enemy ship image
-enemyship = (load_file(DATADIR + 'eship.bmp'))
-enemyship2 = (load_file(DATADIR + 'enemy2.jpeg'))
-
-# loads laser, laser1 and all other images associated with pshoot
-shot = load_file(DATADIR + 'laser.bmp')
-eshot = load_file(DATADIR + 'elaser.bmp')
-
-# array to hold the explosions
-global explosions
-explosions = []
-# load the collision animations... dont ask why theres so many im just lazy
-explosions.append(load_file(DATADIR + 'explosion1.bmp'))
-explosions.append(load_file(DATADIR + 'explosion2.bmp'))
-explosions.append(load_file(DATADIR + 'explosion3.bmp'))
-explosions.append(load_file(DATADIR + 'explosion4.bmp'))
-explosions.append(load_file(DATADIR + 'explosion5.bmp'))
-
-playershipanimation = []
-for x in range(1, 7):
-    playershipanimation.append(load_file(DATADIR + 'pship' + str(x) + '.jpg'))
-for x in range(7, 1, -1):
-    img = load_file(DATADIR + 'pship' + str(x) + '.jpg')
-    img = pygame.transform.flip(img, 1, 0)
-    playershipanimation.append(img)
-playerdmgani = []
-playerdmgimg = load_file(DATADIR + 'pshipdamage.bmp')
-for temp in range(len(playershipanimation)):
-    playerdmgani.append(playerdmgimg)
-
-# initialize pygame
 pygame.init()
 
 print "Global Variables Loaded"
