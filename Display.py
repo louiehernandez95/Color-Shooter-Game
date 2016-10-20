@@ -1,5 +1,4 @@
 import pygame
-import time
 import random
 
 
@@ -15,7 +14,7 @@ bright_red = (255,0,0)
 bright_green = (0,255,0)
 
 ship_height= 72
-ship_width=94
+ship_width=130
 gameDisplay =pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption("Planet Parenthood") #Changes the title of the window
 clock=pygame.time.Clock()
@@ -27,6 +26,7 @@ def things(thingx,thingy, thingw,thingh,color,enemyIMG):
     pygame.draw.rect(gameDisplay, color, [thingx, thingy, thingw, thingh])
     gameDisplay.blit(enemyIMG, (thingx, thingy))
 
+
 def ship(x,y):
     gameDisplay.blit(shipIMG,(x,y))
 def text_objects(text, font):
@@ -34,7 +34,7 @@ def text_objects(text, font):
     return textSurface, textSurface.get_rect()
 def crash():
     largeText = pygame.font.SysFont("comicsansms", 115)
-    TextSurf, TextRect = text_objects("You Crashed", largeText)
+    TextSurf, TextRect = text_objects("You Lose!", largeText)
     TextRect.center = ((display_width / 2), (display_height / 2))
     gameDisplay.blit(TextSurf, TextRect)
 
@@ -123,12 +123,17 @@ def game_intro():
 
 
 def game_loop():
+    global pause
+    ############
+    pygame.mixer.music.load('THEME')
+    pygame.mixer.music.play(-1)
+    ############
     x=0
     y=(display_height*0.5)
     y_change=0
     thing_startx= 999
     thing_starty= random.randrange(0,display_height)
-    thing_speed=-8
+    thing_speed=-15
     thing_height = 94
     thing_width = 90
     #So the user has to X out in order to exit the window
@@ -158,10 +163,13 @@ def game_loop():
         if thing_startx < 0:
             thing_startx=display_width
             thing_starty=random.randrange(0,display_height)
-        if x <thing_startx+thing_width:
-            print('x crossover')
-            #if y>thing_starty and y< thing_starty + thing_height or y+ship_height> thing_starty and x+ship_width<thing_startx+thing_width:
-                #crash()
+        if y < thing_starty + thing_height:
+            if x > thing_startx and x < thing_startx + thing_width:
+                print('x crossover')
+                crash()
+            if  x + ship_width > thing_startx and y+ship_height>thing_starty:
+                print'z crash'
+                crash()
         pygame.display.update()
         #How fast are we going to target Frames per second
         clock.tick(60)
