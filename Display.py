@@ -20,19 +20,20 @@ pygame.display.set_caption("Planet Parenthood") #Changes the title of the window
 clock=pygame.time.Clock()
 shipIMG= pygame.image.load('ship')
 enemyIMG=pygame.image.load('enemies')
-gameIcon = pygame.image.load('logo.jpg')
+crash_sound = pygame.mixer.Sound("RoundAbout")
 
-def things(thingx,thingy, thingw,thingh,color,enemyIMG):
-    pygame.draw.rect(gameDisplay, color, [thingx, thingy, thingw, thingh])
-    gameDisplay.blit(enemyIMG, (thingx, thingy))
-
-
+def enemies(enemyx,enemyy, enemyw,enemyh,color,enemyIMG):
+    pygame.draw.rect(gameDisplay, color, [enemyx, enemyy, enemyw, enemyh])
+    gameDisplay.blit(enemyIMG, (enemyx, enemyy))
 def ship(x,y):
     gameDisplay.blit(shipIMG,(x,y))
 def text_objects(text, font):
     textSurface=font.render(text, True,black)
     return textSurface, textSurface.get_rect()
 def crash():
+    pygame.mixer.Sound.play(crash_sound)
+    pygame.mixer.music.stop()
+
     largeText = pygame.font.SysFont("comicsansms", 115)
     TextSurf, TextRect = text_objects("You Lose!", largeText)
     TextRect.center = ((display_width / 2), (display_height / 2))
@@ -131,11 +132,11 @@ def game_loop():
     x=0
     y=(display_height*0.5)
     y_change=0
-    thing_startx= 999
-    thing_starty= random.randrange(0,display_height)
-    thing_speed=-15
-    thing_height = 94
-    thing_width = 90
+    enemy_startx= 999
+    enemy_starty= random.randrange(0,display_height)
+    enemy_speed=-15
+    enemy_height = 94
+    enemy_width = 90
     #So the user has to X out in order to exit the window
     gameExit=False
     while not gameExit:
@@ -154,26 +155,20 @@ def game_loop():
         y+=y_change
         gameDisplay.fill(white)
 
-        things(thing_startx, thing_starty, thing_width, thing_height, black, enemyIMG)
-        thing_startx+=thing_speed
+        enemies(enemy_startx, enemy_starty, enemy_width, enemy_height, black, enemyIMG)
+        enemy_startx+=enemy_speed
 
         ship(x,y)
         if y > display_height-ship_height or y<0:
             crash()
-        if thing_startx < 0:
-            thing_startx=display_width
-            thing_starty=random.randrange(0,display_height)
-        if y < thing_starty + thing_height:
-            if x > thing_startx and x < thing_startx + thing_width:
-                print('x crossover')
-                crash()
-            if  x + ship_width > thing_startx and y+ship_height>thing_starty:
-                print'z crash'
+        if enemy_startx < 0:
+            enemy_startx=display_width
+            enemy_starty=random.randrange(0,display_height)
+        if y < enemy_starty + enemy_height:
+            if  x + ship_width > enemy_startx and y+ship_height>enemy_starty:
                 crash()
         pygame.display.update()
         #How fast are we going to target Frames per second
         clock.tick(60)
 game_intro()
 game_loop()
-pygame.quit()
-quit()
