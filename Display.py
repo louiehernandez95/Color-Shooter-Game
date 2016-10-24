@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 
 
 pygame.init()
@@ -15,13 +16,18 @@ bright_green = (0,255,0)
 
 ship_height= 72
 ship_width=130
+clock=pygame.time.Clock()
 gameDisplay =pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption("Planet Parenthood") #Changes the title of the window
 clock=pygame.time.Clock()
 shipIMG= pygame.image.load('ship')
 enemyIMG=pygame.image.load('enemies')
 crash_sound = pygame.mixer.Sound("RoundAbout")
-
+pause=False
+def Score(count):
+    font = pygame.font.SysFont("comicsansms", 25)
+    text = font.render("Score: "+str(count), True, black)
+    gameDisplay.blit(text,(0,0))
 def enemies(enemyx,enemyy, enemyw,enemyh,color,enemyIMG):
     pygame.draw.rect(gameDisplay, color, [enemyx, enemyy, enemyw, enemyh])
     gameDisplay.blit(enemyIMG, (enemyx, enemyy))
@@ -125,10 +131,10 @@ def game_intro():
 
 def game_loop():
     global pause
-    ############
+
     pygame.mixer.music.load('THEME')
     pygame.mixer.music.play(-1)
-    ############
+
     x=0
     y=(display_height*0.5)
     y_change=0
@@ -137,6 +143,7 @@ def game_loop():
     enemy_speed=-15
     enemy_height = 94
     enemy_width = 90
+    points_dodging=0
     #So the user has to X out in order to exit the window
     gameExit=False
     while not gameExit:
@@ -157,8 +164,11 @@ def game_loop():
 
         enemies(enemy_startx, enemy_starty, enemy_width, enemy_height, black, enemyIMG)
         enemy_startx+=enemy_speed
+        ship(x, y)
+        Score(points_dodging)
 
-        ship(x,y)
+        if enemy_startx < 1:
+            points_dodging += 1
         if y > display_height-ship_height or y<0:
             crash()
         if enemy_startx < 0:
