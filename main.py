@@ -19,4 +19,3 @@ class Planet_Parenthood():
 if __name__ == "__main__":
     game = Planet_Parenthood()
     game.start()
-
