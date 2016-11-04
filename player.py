@@ -87,3 +87,4 @@ def on_platform(player):
                 return True
 
     return False
+
