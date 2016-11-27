@@ -4,17 +4,25 @@ from pygame.locals import *
 
 import state
 import game
+import globalvars
+from background import BackgroundManager
 
 
 class Title(state.State):
     def __init__(self):
         self.display = pygame.display.get_surface()
-        self.background = pygame.image.load("data/images/space.png")
+
+        self.background = globalvars.screen
+        self.bgstars = BackgroundManager()
+        #self.updaterects = []
+        #self.updaterects += self.bgstars.draw()
+        #self.updaterects += self.bgstars.clear()
+
         self.font_manager = pygame.font.SysFont("comicssansms", 64)
         self.help_font_manager = pygame.font.SysFont("comicssansms", 28)
         self.title_font_manager = pygame.font.SysFont("comicssansms", 104)
 
-        self.title = self.title_font_manager.render("Planet Parenthood", True, (255, 255, 255))
+        self.title = self.title_font_manager.render("Highway to Hell", True, (255, 255, 255))
         self.title_rect = pygame.Rect((self.display.get_width() / 2 - self.title.get_width() / 2,
                                        self.display.get_height() / 2 - self.title.get_height() * 2),
                                       (self.title.get_width(), self.title.get_height()))
@@ -25,7 +33,7 @@ class Title(state.State):
                                             self.display.get_height() / 2 - self.start_game.get_height()),
                                            (self.start_game.get_width(), self.start_game.get_height()))
 
-        self.help = self.font_manager.render("HELP", True, (0, 0, 0))
+        self.help = self.font_manager.render("HELP", True, (254, 4, 2))
         self.help_rect = pygame.Rect(
             (self.display.get_width() / 2 - self.help.get_width() / 2, self.display.get_height() / 2),
             (self.help.get_width(), self.help.get_height()))
@@ -35,7 +43,7 @@ class Title(state.State):
                                             self.display.get_height() / 2 - self.help_image.get_height() / 2),
                                            (self.help_image.get_width(), self.help_image.get_height()))
 
-        self.exit_game = self.font_manager.render("EXIT", True, (0, 0, 0))
+        self.exit_game = self.font_manager.render("EXIT", True, (254, 4, 2))
         self.exit_game_rect = pygame.Rect((self.display.get_width() / 2 - self.exit_game.get_width() / 2,
                                            self.display.get_height() / 2 + self.exit_game.get_height()),
                                           (self.exit_game.get_width(), self.exit_game.get_height()))
@@ -92,43 +100,43 @@ class Title(state.State):
 
     def next(self):
         if self.current_choice == 1:
-            self.start_game = self.font_manager.render("START", True, (0, 0, 0))
+            self.start_game = self.font_manager.render("START", True, (254, 4, 2))
             self.help = self.font_manager.render("HELP", True, (255, 255, 255))
-            self.exit_game = self.font_manager.render("EXIT", True, (0, 0, 0))
+            self.exit_game = self.font_manager.render("EXIT", True, (254, 4, 2))
             self.current_choice = 2
         elif self.current_choice == 2:
-            self.start_game = self.font_manager.render("START", True, (0, 0, 0))
-            self.help = self.font_manager.render("HELP", True, (0, 0, 0))
+            self.start_game = self.font_manager.render("START", True, (254, 4, 2))
+            self.help = self.font_manager.render("HELP", True, (254, 4, 2))
             self.exit_game = self.font_manager.render("EXIT", True, (255, 255, 255))
             self.current_choice = 3
         else:
             self.start_game = self.font_manager.render("START", True, (255, 255, 255))
-            self.help = self.font_manager.render("HELP", True, (0, 0, 0))
-            self.exit_game = self.font_manager.render("EXIT", True, (0, 0, 0))
+            self.help = self.font_manager.render("HELP", True, (254, 4, 2))
+            self.exit_game = self.font_manager.render("EXIT", True, (254, 4, 2))
             self.current_choice = 1
 
     def previous(self):
         if self.current_choice == 1:
-            self.start_game = self.font_manager.render("START", True, (0, 0, 0))
-            self.help = self.font_manager.render("HELP", True, (0, 0, 0))
+            self.start_game = self.font_manager.render("START", True, (254, 4, 2))
+            self.help = self.font_manager.render("HELP", True, (254, 4, 2))
             self.exit_game = self.font_manager.render("EXIT", True, (255, 255, 255))
             self.current_choice = 3
         elif self.current_choice == 2:
             self.start_game = self.font_manager.render("START", True, (255, 255, 255))
-            self.help = self.font_manager.render("HELP", True, (0, 0, 0))
-            self.exit_game = self.font_manager.render("EXIT", True, (0, 0, 0))
+            self.help = self.font_manager.render("HELP", True, (254, 4, 2))
+            self.exit_game = self.font_manager.render("EXIT", True, (254, 4, 2))
             self.current_choice = 1
         else:
-            self.start_game = self.font_manager.render("START", True, (0, 0, 0))
+            self.start_game = self.font_manager.render("START", True, (254, 4, 2))
             self.help = self.font_manager.render("HELP", True, (255, 255, 255))
-            self.exit_game = self.font_manager.render("EXIT", True, (0, 0, 0))
+            self.exit_game = self.font_manager.render("EXIT", True, (254, 4, 2))
             self.current_choice = 2
 
     def animate_title(self):
         if self.title_color == "white":
-            self.title = self.title_font_manager.render("Planet Parenthood!", True, (0, 0, 0))
-            self.title_color = "black"
+            self.title = self.title_font_manager.render("Highway to Hell", True, (254, 4, 2))
+            self.title_color = "red"
         else:
-            self.title = self.title_font_manager.render("Planet Parenthood!", True, (255, 255, 255))
+            self.title = self.title_font_manager.render("Highway to Hell", True, (255, 255, 255))
             self.title_color = "white"
 

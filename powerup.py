@@ -44,4 +44,4 @@ class BulletPU(PowerUp):
 
     def add_bonus(self):
         self.bonus_sound.play()
-        game.Game.player.bullets += 50
+        game.Game.player.bullets += 25

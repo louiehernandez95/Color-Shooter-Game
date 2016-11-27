@@ -7,6 +7,8 @@ import platform
 import enemy
 import powerup
 import surface_manager
+import globalvars
+from background import BackgroundManager
 
 class Level(state.State):
     surface_manager = pygame.sprite.RenderUpdates()
@@ -14,7 +16,8 @@ class Level(state.State):
         self.display = pygame.display.get_surface()
         self.current_platforms = []
         self.num_of_platforms = 4
-        self.background = pygame.image.load("data/images/space.png")
+        self.background = globalvars.screen
+        self.bgstars = BackgroundManager()
         self.display.blit(self.background, (0, 0))
         self.enter()
 
@@ -36,10 +39,11 @@ class Level(state.State):
             new_platform = platform.Platform("data/images/platform.png")
             surface_manager.add(new_platform)
             self.current_platforms.append(new_platform)
-
-        if time.clock() >= self.time_since_last_powerup + 30:
+        if time.clock() >= self.time_since_last_powerup + 10:
             surface_manager.add(powerup.BulletPU())
             self.time_since_last_powerup = time.clock()
+
+
 
         if time.clock() >= self.time_since_last_enemyspawn + .5:
             surface_manager.add(enemy.Enemy())

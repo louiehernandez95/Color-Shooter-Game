@@ -11,9 +11,10 @@ class Player(pygame.sprite.DirtySprite):
     def __init__(self):
         super(Player, self).__init__()
         self.display = pygame.display.get_surface()
-        frame_2 = pygame.image.load("data/images/ship2.png").convert_alpha()
-
-        self.frame_set = [frame_2, frame_2]
+        frame_1 = pygame.image.load("data/images/frame_1.png").convert_alpha()
+        frame_2 = pygame.image.load("data/images/frame_2.png").convert_alpha()
+        frame_3 = pygame.image.load("data/images/frame_3.png").convert_alpha()
+        self.frame_set = [frame_1, frame_2, frame_3, frame_2, frame_1,frame_3]
         self.current_frame = 0
         self.timer = time.clock()
 
