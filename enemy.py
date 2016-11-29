@@ -4,13 +4,13 @@ import projectile
 import game
 import surface_manager
 
-class Enemy(pygame.sprite.DirtySprite):
+class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy, self).__init__()
         self.display = pygame.display.get_surface()
 
         enemy_sprite = pygame.image.load("data/images/enemy_frame.png").convert_alpha()
-        self.image = pygame.transform.flip(enemy_sprite, True, False)
+        self.image = pygame.transform.flip(enemy_sprite, False, False)
         self.rect = pygame.Rect((0, 0), (self.image.get_width(), self.image.get_height()))
         paths = [[1000, -128, -12, 12], [1000, self.display.get_height()+128, -12, -12]]
         self.pos_x, self.pos_y, self.velx, self.vely = random.choice(paths)

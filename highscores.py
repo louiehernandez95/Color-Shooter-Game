@@ -3,7 +3,7 @@ from pygame.locals import *
 
 import state
 import title
-from background import BackgroundManager
+from background import TestSprite
 import globalvars
 
 
@@ -15,7 +15,7 @@ class HighScores(state.State):
     def __init__(self, score):
         self.display = pygame.display.get_surface()
         self.background = globalvars.screen
-        self.bgstars = BackgroundManager()
+        self.bgstars = TestSprite()
         if score > 0:
             HighScores.high_scores.append(score)
         HighScores.high_scores.sort(reverse=True)

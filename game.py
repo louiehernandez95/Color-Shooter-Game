@@ -11,7 +11,7 @@ import hud
 import highscores
 import surface_manager
 import globalvars
-from background import BackgroundManager
+
 
 class Game(state.State):
     score = 0
@@ -27,7 +27,7 @@ class Game(state.State):
         Game.player = self.player
         self.hud_manager = state.StateMachine(self, hud.Hud(self, self.player, self.timer))
         self.background = globalvars.screen
-        self.bgstars = BackgroundManager()
+
         surface_manager.add(self.player)
         self.music2 = pygame.mixer.Sound("data/sound/THEME_SONG.wav")
         self.music2.play(loops=-1)

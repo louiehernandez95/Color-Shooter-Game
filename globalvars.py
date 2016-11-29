@@ -1,10 +1,5 @@
 import pygame
 
-global BG_Speed, init_stars, star_color
-BG_Speed=5
-init_stars=15
-star_color=(150,150,150)
-
 global bgcolor
 bgcolor=(0,0,0)
 

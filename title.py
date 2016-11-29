@@ -5,7 +5,7 @@ from pygame.locals import *
 import state
 import game
 import globalvars
-from background import BackgroundManager
+
 
 
 class Title(state.State):
@@ -13,11 +13,6 @@ class Title(state.State):
         self.display = pygame.display.get_surface()
 
         self.background = globalvars.screen
-        self.bgstars = BackgroundManager()
-        #self.updaterects = []
-        #self.updaterects += self.bgstars.draw()
-        #self.updaterects += self.bgstars.clear()
-
         self.font_manager = pygame.font.SysFont("comicssansms", 64)
         self.help_font_manager = pygame.font.SysFont("comicssansms", 28)
         self.title_font_manager = pygame.font.SysFont("comicssansms", 104)
@@ -27,7 +22,6 @@ class Title(state.State):
                                        self.display.get_height() / 2 - self.title.get_height() * 2),
                                       (self.title.get_width(), self.title.get_height()))
         self.title_color = "white"
-
         self.start_game = self.font_manager.render("START", True, (255, 255, 255))
         self.start_game_rect = pygame.Rect((self.display.get_width() / 2 - self.start_game.get_width() / 2,
                                             self.display.get_height() / 2 - self.start_game.get_height()),
@@ -57,7 +51,6 @@ class Title(state.State):
         self.music = pygame.mixer.Sound("data/sound/title_highscore.wav")
 
         self.music.play(loops=-1)
-
     def exit(self):
         self.music.stop()
         self.display.blit(self.background, (0, 0))

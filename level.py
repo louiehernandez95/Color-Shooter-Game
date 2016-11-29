@@ -8,7 +8,7 @@ import enemy
 import powerup
 import surface_manager
 import globalvars
-from background import BackgroundManager
+
 
 class Level(state.State):
     surface_manager = pygame.sprite.RenderUpdates()
@@ -17,7 +17,7 @@ class Level(state.State):
         self.current_platforms = []
         self.num_of_platforms = 4
         self.background = globalvars.screen
-        self.bgstars = BackgroundManager()
+
         self.display.blit(self.background, (0, 0))
         self.enter()
 
