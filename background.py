@@ -21,7 +21,7 @@ class TestSprite(pygame.sprite.Sprite):
         self.rect = pygame.Rect(0, 0, 700, 600)
 
     def update(self):
-        if time.clock() >= self.timer + .5:
+        if time.clock() >= self.timer + .005:
             try:
                 self.current_frame += 1
                 self.image = self.images[self.current_frame]

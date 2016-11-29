@@ -18,7 +18,7 @@ class Highway_to_Hell():
         x=0
         while True:
             self.sm.update()
-            if x%100==0:
+            if x%50==0:
                 my_group.update()
                 my_group.draw(display)
                 pygame.display.flip()
