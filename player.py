@@ -78,7 +78,6 @@ class Player(pygame.sprite.DirtySprite):
 
 def on_platform(player):
     collidelist = pygame.sprite.spritecollide(player, surface_manager.surface_list, False)
-
     for item in collidelist:
         if type(item) is enemy.Enemy:
             continue
@@ -88,4 +87,3 @@ def on_platform(player):
                 return True
 
     return False
-

@@ -4,7 +4,7 @@ from pygame.locals import *
 
 import state
 import game
-import globalvars
+
 
 
 
@@ -12,7 +12,7 @@ class Title(state.State):
     def __init__(self):
         self.display = pygame.display.get_surface()
 
-        self.background = globalvars.screen
+        self.background = pygame.image.load('data/images/background_frame3.png')
         self.font_manager = pygame.font.SysFont("comicssansms", 64)
         self.help_font_manager = pygame.font.SysFont("comicssansms", 28)
         self.title_font_manager = pygame.font.SysFont("comicssansms", 104)

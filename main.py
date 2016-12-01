@@ -3,6 +3,7 @@ import pygame
 import state
 import title
 from background import TestSprite
+import enemy_2
 
 pygame.init()
 display = pygame.display.set_mode((700,600))

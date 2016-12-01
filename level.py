@@ -7,7 +7,9 @@ import platform
 import enemy
 import powerup
 import surface_manager
-import globalvars
+import enemy_2
+
+
 
 
 class Level(state.State):
@@ -16,7 +18,7 @@ class Level(state.State):
         self.display = pygame.display.get_surface()
         self.current_platforms = []
         self.num_of_platforms = 4
-        self.background = globalvars.screen
+        self.background = pygame.image.load('data/images/background_frame2.png')
 
         self.display.blit(self.background, (0, 0))
         self.enter()
@@ -27,7 +29,7 @@ class Level(state.State):
         self.current_platforms.append(new_platform)
         self.time_since_last_powerup = time.clock()
         self.time_since_last_enemyspawn = time.clock()
-
+        self.time_since_last_enemyspawn2 = time.clock()
     def exit(self):
         surface_manager.empty()
 
@@ -42,12 +44,12 @@ class Level(state.State):
         if time.clock() >= self.time_since_last_powerup + 10:
             surface_manager.add(powerup.BulletPU())
             self.time_since_last_powerup = time.clock()
-
-
-
         if time.clock() >= self.time_since_last_enemyspawn + .5:
             surface_manager.add(enemy.Enemy())
             self.time_since_last_enemyspawn = time.clock()
+        if time.clock() >= self.time_since_last_enemyspawn2 + .75:
+            surface_manager.add(enemy_2.Enemy2())
+            self.time_since_last_enemyspawn2 = time.clock()
 
     def check_platforms(self):
         for platform in self.current_platforms:

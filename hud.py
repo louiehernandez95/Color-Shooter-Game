@@ -14,7 +14,7 @@ class Hud(state.State):
         Hud.timer = timer
         Hud.game = game
 
-        self.font_manager = pygame.font.SysFont("comicssansms", 28)
+        self.font_manager = pygame.font.SysFont("comicssansms", 32)
 
         self.bullet_element = BulletElement(self.font_manager)
 
@@ -59,7 +59,7 @@ class ComboElement(pygame.sprite.DirtySprite):
         super(ComboElement, self).__init__()
         self.remove_existing()
         self.display = pygame.display.get_surface()
-        self.font_manager = pygame.font.SysFont("comicssansms", 28)
+        self.font_manager = pygame.font.SysFont("comicssansms", 32)
         self.image = self.font_manager.render("COMBO! %d PT. BONUS" % bonus, True, (255, 255, 255))
         self.rect = pygame.Rect((0 - self.image.get_width(), self.image.get_height()*2), (self.image.get_width(), self.image.get_height()))
         self.pos_x = 0 - self.image.get_width()

@@ -3,8 +3,7 @@ from pygame.locals import *
 
 import state
 import title
-from background import TestSprite
-import globalvars
+
 
 
 class HighScores(state.State):
@@ -14,8 +13,6 @@ class HighScores(state.State):
             high_scores.append(int(line))
     def __init__(self, score):
         self.display = pygame.display.get_surface()
-        self.background = globalvars.screen
-        self.bgstars = TestSprite()
         if score > 0:
             HighScores.high_scores.append(score)
         HighScores.high_scores.sort(reverse=True)
@@ -51,9 +48,7 @@ class HighScores(state.State):
         keys = pygame.key.get_pressed()
         if keys[K_RETURN]:
             return title.Title()
-
     def act(self):
-        self.display.blit(self.background, (0, 0))
         self.display.blit(self.header2, self.header_rect2)
         self.display.blit(self.header, self.header_rect)
         self.display.blit(self.Try_Again, self.Try_Again_rect)
