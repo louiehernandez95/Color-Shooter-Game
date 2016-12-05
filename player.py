@@ -27,6 +27,7 @@ class Player(pygame.sprite.DirtySprite):
         self.current_jump = 0
         self.is_falling = True
         self.bullets = 50
+        self.bullets2 = 1
         self.throw_sound = pygame.mixer.Sound("data/sound/throw.wav")
 
     def update(self):
@@ -74,7 +75,11 @@ class Player(pygame.sprite.DirtySprite):
             self.throw_sound.play()
             surface_manager.add(projectile.Projectile(self))
             self.bullets -= 1
-
+    def shoot_bullets2(self):
+        if self.bullets2 > 0:
+            self.throw_sound.play()
+            surface_manager.add(projectile.Projectile2(self))
+            self.bullets2 -= 1
 
 def on_platform(player):
     collidelist = pygame.sprite.spritecollide(player, surface_manager.surface_list, False)

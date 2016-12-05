@@ -23,7 +23,7 @@ class Enemy(pygame.sprite.Sprite):
             surface_manager.remove(self)
 
         self.check_if_hit()
-
+        self.check_if_hit2()
         if self.is_hit:
             self.pos_y += 10
             if self.pos_y >= self.display.get_height():
@@ -43,6 +43,17 @@ class Enemy(pygame.sprite.Sprite):
         for item in collidelist:
             if type(item) is projectile.Projectile:
                 surface_manager.remove(item)
+                self.is_hit = True
+                self.image = pygame.transform.flip(self.image, False, True)
+                self.hit_sound.play()
+                game.update_score()
+    def check_if_hit2(self):
+        if self.is_hit:
+            return
+        collidelist = pygame.sprite.spritecollide(self, surface_manager.surface_list, False)
+
+        for item in collidelist:
+            if type(item) is  projectile.Projectile2:
                 self.is_hit = True
                 self.image = pygame.transform.flip(self.image, False, True)
                 self.hit_sound.play()

@@ -1,16 +1,12 @@
 import pygame
 import random
 import time
-
 import state
 import platform
 import enemy
 import powerup
 import surface_manager
 import enemy_2
-
-
-
 
 class Level(state.State):
     surface_manager = pygame.sprite.RenderUpdates()
@@ -28,6 +24,7 @@ class Level(state.State):
         surface_manager.add(new_platform)
         self.current_platforms.append(new_platform)
         self.time_since_last_powerup = time.clock()
+        self.time_since_last_powerup2 = time.clock()
         self.time_since_last_enemyspawn = time.clock()
         self.time_since_last_enemyspawn2 = time.clock()
     def exit(self):
@@ -41,14 +38,17 @@ class Level(state.State):
             new_platform = platform.Platform("data/images/platform.png")
             surface_manager.add(new_platform)
             self.current_platforms.append(new_platform)
-        if time.clock() >= self.time_since_last_powerup + 10:
+        if time.clock() >= self.time_since_last_powerup + 20:
             surface_manager.add(powerup.BulletPU())
             self.time_since_last_powerup = time.clock()
+        if time.clock() >= self.time_since_last_powerup2 + 50:
+            surface_manager.add(powerup.BulletPU2())
+            self.time_since_last_powerup2 = time.clock()
         if time.clock() >= self.time_since_last_enemyspawn + .5:
             surface_manager.add(enemy.Enemy())
             self.time_since_last_enemyspawn = time.clock()
         if time.clock() >= self.time_since_last_enemyspawn2 + .75:
-            surface_manager.add(enemy_2.Enemy2())
+            surface_manager.add(enemy_2.Enemy_enter())
             self.time_since_last_enemyspawn2 = time.clock()
 
     def check_platforms(self):

@@ -10,7 +10,7 @@ import title
 import hud
 import highscores
 import surface_manager
-import enemy_2
+
 
 
 
@@ -40,17 +40,11 @@ class Game(state.State):
         Game.score = 0
         Game.streak_counter = 0
     def reason(self):
-        keys = pygame.key.get_pressed()
-        if keys[K_ESCAPE]:
-            self.level_manager.current_state.exit()
-            return title.Title()
-        if self.player.pos_y > self.display.get_height() or enemy_2==False:
-            print'game over'
+        if self.player.pos_y > self.display.get_height():
             if Game.streak_counter > 1:
                 Game.score += 5 * (Game.streak_counter * 2)
             self.level_manager.current_state.exit()
             return highscores.HighScores(Game.score)
-
 
     def act(self):
         self.timer.tick(60)
@@ -66,7 +60,8 @@ class Game(state.State):
             if event.type == KEYDOWN:
                 if event.key == K_SPACE:
                     self.player.shoot_bullets()
-
+                if event.key ==K_z:
+                    self.player.shoot_bullets2()
         check_for_combo()
         self.level_manager.update()
         surface_manager.update()

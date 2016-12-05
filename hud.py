@@ -15,13 +15,11 @@ class Hud(state.State):
         Hud.game = game
 
         self.font_manager = pygame.font.SysFont("comicssansms", 32)
-
         self.bullet_element = BulletElement(self.font_manager)
-
+        self.bullet_element2 = BulletElement2(self.font_manager)
         self.score_element = ScoreElement(self.font_manager)
-
         surface_manager.add(self.bullet_element)
-
+        surface_manager.add(self.bullet_element2)
         surface_manager.add(self.score_element)
 
     def act(self):
@@ -35,11 +33,21 @@ class BulletElement(pygame.sprite.DirtySprite):
         self.rect = pygame.Rect((0, 0), (self.image.get_width(), self.image.get_height()))
         self.dirty = 1
 
-
     def update(self):
         self.image =  self.font_manager.render("SHOTS LEFT: %d" % Hud.player.bullets, True, (255, 255, 255))
         self.dirty = 1
+class BulletElement2(pygame.sprite.DirtySprite):
+    def __init__(self, font_manager):
+        super(BulletElement2, self).__init__()
+        self.font_manager = font_manager
+        self.image = self.font_manager.render("MEGA SHOTS LEFT: %d" % Hud.player.bullets2, True, (255, 255, 255))
+        self.rect = pygame.Rect((0, self.image.get_height() -3),
+                                (self.image.get_width(), self.image.get_height()))
+        self.dirty = 1
 
+    def update(self):
+        self.image =  self.font_manager.render("MEGA SHOTS LEFT: %d" % Hud.player.bullets2, True, (255, 255, 255))
+        self.dirty = 1
 class ScoreElement(pygame.sprite.DirtySprite):
     def __init__(self, font_manager):
         super(ScoreElement, self).__init__()
@@ -61,7 +69,7 @@ class ComboElement(pygame.sprite.DirtySprite):
         self.display = pygame.display.get_surface()
         self.font_manager = pygame.font.SysFont("comicssansms", 32)
         self.image = self.font_manager.render("COMBO! %d PT. BONUS" % bonus, True, (255, 255, 255))
-        self.rect = pygame.Rect((0 - self.image.get_width(), self.image.get_height()*2), (self.image.get_width(), self.image.get_height()))
+        self.rect = pygame.Rect((0 - self.image.get_width(), self.image.get_height()*10), (self.image.get_width(), self.image.get_height()))
         self.pos_x = 0 - self.image.get_width()
         self.pos_y = self.image.get_height()*2
         self.delay = time.clock()

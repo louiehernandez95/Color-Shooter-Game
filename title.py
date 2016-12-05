@@ -17,7 +17,7 @@ class Title(state.State):
         self.help_font_manager = pygame.font.SysFont("comicssansms", 28)
         self.title_font_manager = pygame.font.SysFont("comicssansms", 104)
 
-        self.title = self.title_font_manager.render("Highway to Hell", True, (255, 255, 255))
+        self.title = self.title_font_manager.render("Color Shooter", True, (255, 255, 255))
         self.title_rect = pygame.Rect((self.display.get_width() / 2 - self.title.get_width() / 2,
                                        self.display.get_height() / 2 - self.title.get_height() * 2),
                                       (self.title.get_width(), self.title.get_height()))
@@ -127,9 +127,9 @@ class Title(state.State):
 
     def animate_title(self):
         if self.title_color == "white":
-            self.title = self.title_font_manager.render("Highway to Hell", True, (254, 4, 2))
+            self.title = self.title_font_manager.render("Color Shooter", True, (254, 4, 2))
             self.title_color = "red"
         else:
-            self.title = self.title_font_manager.render("Highway to Hell", True, (255, 255, 255))
+            self.title = self.title_font_manager.render("Color Shooter", True, (255, 255, 255))
             self.title_color = "white"
 
