@@ -44,7 +44,7 @@ class Level(state.State):
         if time.clock() >= self.time_since_last_powerup2 + 50:
             surface_manager.add(powerup.BulletPU2())
             self.time_since_last_powerup2 = time.clock()
-        if time.clock() >= self.time_since_last_enemyspawn + .5:
+        if time.clock() >= self.time_since_last_enemyspawn + .35:
             surface_manager.add(enemy.Enemy())
             self.time_since_last_enemyspawn = time.clock()
         if time.clock() >= self.time_since_last_enemyspawn2 + .75:
