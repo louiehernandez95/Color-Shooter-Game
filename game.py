@@ -40,6 +40,10 @@ class Game(state.State):
         Game.score = 0
         Game.streak_counter = 0
     def reason(self):
+        keys = pygame.key.get_pressed()
+        if keys[K_ESCAPE]:
+            self.level_manager.current_state.exit()
+            return title.Title()
         if self.player.pos_y > self.display.get_height():
             if Game.streak_counter > 1:
                 Game.score += 5 * (Game.streak_counter * 2)

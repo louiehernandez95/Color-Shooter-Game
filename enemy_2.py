@@ -17,7 +17,6 @@ class Enemy2(pygame.sprite.DirtySprite):
         self.hit_sound = pygame.mixer.Sound("data/sound/hit.wav")
         self.dirty = 1
         self.is_hit=False
-        self.score=0
     def self_hit(self):
         collidelist = pygame.sprite.spritecollide(self, surface_manager.surface_list, False)
         for item in collidelist:
@@ -68,7 +67,6 @@ class Enemy_enter(Enemy2):
 
         for item in collidelist:
             if type(item) is projectile.Projectile2:
-
                 self.is_hit = True
                 self.image = pygame.transform.flip(self.image, False, True)
                 self.hit_sound.play()
