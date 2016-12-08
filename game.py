@@ -13,7 +13,7 @@ import surface_manager
 
 
 
-
+#transitions the game from state to state
 class Game(state.State):
     score = 0
     streak_counter = 0
