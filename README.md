@@ -1,4 +1,4 @@
-# Planet ParentHood
+# Color Shooter
 
 Python 2.7.12 is used for this Project:
 Downlaod Link: https://www.python.org/downloads/
