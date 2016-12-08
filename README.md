@@ -15,6 +15,8 @@ Main menu: https://s15.postimg.org/a091nkavv/picture_For_Menu.png.
 Help: https://s30.postimg.org/lyjageo4x/help.png.
 The Game: https://s30.postimg.org/784qgzecx/the_Game.png.
 Scores: https://s24.postimg.org/44hrlthg5/Scores.png.
+
+User Guide: https://docs.google.com/document/d/1VGJqj01H3eXnc_hrpWwjrZO4moaOEdwCFI-m6Krlq10/edit?usp=sharing
  
 
  
