@@ -11,9 +11,9 @@ Windows (64-bits) users:
  download python 2.7.12 (32-bits), and pygame (32-bits)
  
 Visual Pictures of the Game:
- Main menu: https://s15.postimg.org/a091nkavv/picture_For_Menu.png
- Help: https://s30.postimg.org/lyjageo4x/help.png
- The Game: https://s30.postimg.org/784qgzecx/the_Game.png
+Main menu: https://s15.postimg.org/a091nkavv/picture_For_Menu.png
+Help: https://s30.postimg.org/lyjageo4x/help.png
+The Game: https://s30.postimg.org/784qgzecx/the_Game.png
  
 
  
