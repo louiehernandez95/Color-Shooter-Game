@@ -1,7 +1,7 @@
 import pygame
 import random
 import surface_manager
-
+#handles choosing image and dimension of the platform
 class Platform(pygame.sprite.Sprite):
     def __init__(self, img_location):
         super(Platform, self).__init__()
