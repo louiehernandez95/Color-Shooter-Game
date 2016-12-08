@@ -3,14 +3,15 @@ import pygame
 import projectile
 import game
 import surface_manager
-
+#class for first enemy type
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy, self).__init__()
         self.display = pygame.display.get_surface()
-
+        #choose graphic for enemy
         enemy_sprite = pygame.image.load("data/images/enemy_frame.png").convert_alpha()
         self.image = pygame.transform.flip(enemy_sprite, False, False)
+        #use rectangle to contain graphic
         self.rect = pygame.Rect((0, 0), (self.image.get_width(), self.image.get_height()))
         paths = [[1000, -128, -12, 12], [1000, self.display.get_height()+128, -12, -12]]
         self.pos_x, self.pos_y, self.velx, self.vely = random.choice(paths)
@@ -19,6 +20,7 @@ class Enemy(pygame.sprite.Sprite):
         self.dirty = 1
 
     def update(self):
+        #if enemy is past left side of screen , remove from game
         if self.pos_x < 0 - self.rect.width:
             surface_manager.remove(self)
 
