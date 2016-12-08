@@ -4,7 +4,7 @@ from pygame.locals import *
 import state
 import title
 
-
+#handles saving, recalling, and displaying high scores
 
 class HighScores(state.State):
     high_scores = []
