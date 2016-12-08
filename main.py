@@ -3,7 +3,7 @@ import pygame
 import state
 import title
 from background import TestSprite
-
+#sets display and onscreen images/states like title
 pygame.init()
 display = pygame.display.set_mode((700,600))
 pygame.display.set_caption("Color Shooter")
