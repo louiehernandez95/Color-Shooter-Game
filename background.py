@@ -1,6 +1,6 @@
 import pygame
 import time
-
+#backgrouond class, responsible for "choosing" background images and defining their behavior
 def load_image(name):
     image = pygame.image.load(name)
     return image
@@ -8,6 +8,7 @@ def load_image(name):
 class TestSprite(pygame.sprite.Sprite):
     def __init__(self):
         super(TestSprite, self).__init__()
+        #can change/which images to load by defining them below
         self.images = []
         self.images.append(load_image('data/images/background_frame1.png'))
         self.images.append(load_image('data/images/background_frame2.png'))
