@@ -9,6 +9,11 @@ import game
 
 
 class Title(state.State):
+    #.. the self variable represents the instance of the object itself
+    #.. The __init__ method is roughly what represents a constructor in Python. When you call A()
+    #    Python creates an object for you, and passes it as the first parameter to the __init__ method. 
+    #    Any additional parameters (e.g., A(24, 'Hello')) will also get passed as arguments--in 
+    #    this case causing an exception to be raised, since the constructor isn't expecting them
     def __init__(self):
         self.display = pygame.display.get_surface()
 
