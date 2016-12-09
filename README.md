@@ -18,25 +18,9 @@ Scores: https://s24.postimg.org/44hrlthg5/Scores.png.
 
 User Guide: https://docs.google.com/document/d/1VGJqj01H3eXnc_hrpWwjrZO4moaOEdwCFI-m6Krlq10/edit?usp=sharing
 
-Possible future features
-
-
-Fix .exe problem
-
-Character select
-
-Pause button
-
-More powerups
-
-Customize graphics through GUI rather than code
-
-More testing
-
-Multi platform
+As a group, we are still having problem for creating the .exe file. So, if you are able to create a buildable and runable .exe file contact this E-mail louieghernandez95@gmail.com or wlwl-l@hotmail.com. We would really appreciate your contribution. 
  
-
- 
+All music credits go to: https://www.youtube.com/channel/UCsej4tgCoXDgVH3J7M3NMgw
 
  
  
