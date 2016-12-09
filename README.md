@@ -19,11 +19,22 @@ Scores: https://s24.postimg.org/44hrlthg5/Scores.png.
 User Guide: https://docs.google.com/document/d/1VGJqj01H3eXnc_hrpWwjrZO4moaOEdwCFI-m6Krlq10/edit?usp=sharing
 
 Possible future features
+
+
 Fix .exe problem
+
 Character select
+
 Pause button
+
 More powerups
-Customize graphics through GUI rather than code 
+
+Customize graphics through GUI rather than code
+
+More testing
+
+Multi platform
+ 
 
  
 
