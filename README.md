@@ -14,7 +14,7 @@ How to Run through the Command Line:
 
 1). Go to the directory where the files are located.
 
-2). Type into the command line- "python main.py"
+2). Type into the command line- "c:/(type the location of python.exe file) then ( main.py)". For example, "c:/python27/python.exe main.py"
 
 3). Enjoy!
  
