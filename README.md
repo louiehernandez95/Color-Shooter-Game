@@ -11,8 +11,11 @@ Windows (64-bits) users:
  download python 2.7.12 (32-bits), and pygame (32-bits)
 
 How to Run through the Command Line:
+
 1). Go to the directory where the files are located.
+
 2). Type into the command line- "python main.py"
+
 3). Enjoy!
  
 Visual Pictures of the Game:
