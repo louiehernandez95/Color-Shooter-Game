@@ -2,7 +2,7 @@ import time
 import pygame
 import state
 import surface_manager
-
+#defines and manages the heads up display and all its elements
 class Hud(state.State):
     timer = None
     player = None

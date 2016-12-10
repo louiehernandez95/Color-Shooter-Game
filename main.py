@@ -3,7 +3,8 @@ import pygame
 import state
 import title
 from background import TestSprite
-
+#sets display and onscreen images/states like title
+#implements background
 pygame.init()
 display = pygame.display.set_mode((700,600))
 pygame.display.set_caption("Color Shooter")
@@ -22,6 +23,7 @@ class Color_Shooter():
                 my_group.draw(display)
                 pygame.display.flip()
             x+=1
+#restricts inheritance of main file anywhere else
 if __name__ == "__main__":
     game = Color_Shooter()
     game.start()

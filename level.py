@@ -7,7 +7,8 @@ import enemy
 import powerup
 import surface_manager
 import enemy_2
-
+#populates/implements the platforms in the running state of the game
+#adds enemies and power ups after x amount of seconds
 class Level(state.State):
     surface_manager = pygame.sprite.RenderUpdates()
     def __init__(self):

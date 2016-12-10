@@ -5,7 +5,7 @@ import state
 import title
 import game
 
-
+#handles saving, recalling, and displaying high scores
 
 class HighScores(state.State):
     high_scores = []

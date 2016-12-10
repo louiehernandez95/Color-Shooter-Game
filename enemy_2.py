@@ -4,7 +4,8 @@ import projectile
 import player
 import surface_manager
 import game
-
+#second enemy type class
+#similar functionality as enemy_1
 class Enemy2(pygame.sprite.DirtySprite):
     def __init__(self, img):
         super(Enemy2, self).__init__()
